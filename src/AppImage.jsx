@@ -7,7 +7,7 @@ import ImageGallery from 'components/ImageGallery';
 import Loader from 'components/Loader';
 import Searchbar from 'components/Searchbar';
 
-export const App = () => {
+const App = () => {
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [page, setPage] = useState(1);

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Ключ API(v3 auth): 308f19df2a761157194efc58109ee68d
+// Ключ API(v3 auth): 308f19df2a761157194efc58109ee68d;
 
-// Ключ доступа к API(v4 auth): eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMDhmMTlkZjJhNzYxMTU3MTk0ZWZjNTgxMDllZTY4ZCIsInN1YiI6IjYzNTNkMDYwNGNhNjc2MDA4MjVjYjczZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jNU4Cgs9eD0B3oKicejlsIFDcPGthLO_Sfgpz1TvLl0
+// Ключ доступа к API(v4 auth): eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMDhmMTlkZjJhNzYxMTU3MTk0ZWZjNTgxMDllZTY4ZCIsInN1YiI6IjYzNTNkMDYwNGNhNjc2MDA4MjVjYjczZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jNU4Cgs9eD0B3oKicejlsIFDcPGthLO_Sfgpz1TvLl0;
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -26,7 +26,7 @@ class apiThemoviedb {
     return this.fetchMovies(endpoint, params);
   };
 
-  movieSearch = () => {
+  getMovieSearch = () => {
     const endpoint = '/search/movie';
     const params = new URLSearchParams({
       api_key: this.#API_KEY,
@@ -37,11 +37,28 @@ class apiThemoviedb {
     return this.fetchMovies(endpoint, params);
   };
 
-  getMovie = () => {
+  getMovieDetails = () => {
     const endpoint = `/movie/${this.#id}`;
     const params = new URLSearchParams({
       api_key: this.#API_KEY,
       append_to_response: 'videos',
+    });
+    return this.fetchMovies(endpoint, params);
+  };
+
+  getMovieCredits = () => {
+    const endpoint = `/movie/${this.#id}/credits`;
+    const params = new URLSearchParams({
+      api_key: this.#API_KEY,
+    });
+    return this.fetchMovies(endpoint, params);
+  };
+
+  getMovieReviews = () => {
+    const endpoint = `/movie/${this.#id}/reviews`;
+    const params = new URLSearchParams({
+      api_key: this.#API_KEY,
+      page: this.#page,
     });
     return this.fetchMovies(endpoint, params);
   };
@@ -83,7 +100,7 @@ class apiThemoviedb {
 
   // set endpoint(value) {
   //   this.#endpoint = value;
-  // }
+  // };
 }
 
 export default apiThemoviedb;
