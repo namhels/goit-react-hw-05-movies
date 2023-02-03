@@ -5,8 +5,10 @@ import AppBar from 'components/AppBar';
 
 const SharedLayout = () => {
   return (
-    <Box p={4}>
-      <div>8888888888</div>
+    <Box
+      as="header"
+      bg="grey.0"
+      borderBottom="1px solid black">
       <AppBar />
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />

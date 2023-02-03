@@ -12,6 +12,7 @@ export const theme = {
     accent: '#00bcd5',
     muted: '#f6f6f6',
     blues: ['#06b49a', '#00bcd5', '#004170', '#006fbe', '#2d8fd5', '#5aa7de'],
+    grey: ['#e7ecf2', '#eff3f6', '#004170', '#006fbe', '#2d8fd5', '#5aa7de'],
     halloween: [
       '#07b7b4',
       '#9e3e9f',
