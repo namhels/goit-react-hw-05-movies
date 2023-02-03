@@ -2,15 +2,17 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Box from 'components/Box';
 import AppBar from 'components/AppBar';
+import Loader from 'components/Loader';
 
 const SharedLayout = () => {
   return (
     <Box
-      as="header"
-      bg="grey.0"
-      borderBottom="1px solid black">
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center">
       <AppBar />
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Box>

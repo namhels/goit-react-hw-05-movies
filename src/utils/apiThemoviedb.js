@@ -103,4 +103,6 @@ class apiThemoviedb {
   // };
 }
 
-export default apiThemoviedb;
+const api = new apiThemoviedb();
+
+export default api;

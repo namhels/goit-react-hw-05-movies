@@ -2,8 +2,8 @@ import Box from 'components/Box';
 import { NavItem } from './AppBar.styled';
 
 const navItems = [
-  { href: 'home', text: 'Home' },
-  { href: 'movies', text: 'Movies' },
+  { href: 'home', text: 'home' },
+  { href: 'movies', text: 'movies' },
 ];
 
 const AppBar = () => {
@@ -13,8 +13,10 @@ const AppBar = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      gridGap={5}>
-      <Box as="nav" display="flex">
+      width="100%"
+      bg="grey.5"
+      borderBottom="1px solid black">
+      <Box as="nav" display="flex" gridGap={5}>
         {navItems.map(({ href, text }) => (
           <NavItem to={href} key={href}>
             {text}
