@@ -7,6 +7,7 @@ const NavItem = styled(NavLink)`
   gap: ${p => p.theme.space[5]}px;
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[5]}px;
   border-radius: ${p => p.theme.radii.medium};
+  font-weight: ${p => p.theme.fontWeights.bold};
   text-transform: uppercase;
   text-decoration: none;
   color: ${p => p.theme.colors.halloween[5]};

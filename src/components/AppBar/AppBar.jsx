@@ -12,10 +12,8 @@ const AppBar = () => {
       p={4}
       display="flex"
       justifyContent="center"
-      alignItems="center"
       width="100%"
-      bg="grey.5"
-      borderBottom="1px solid black">
+      bg="grey.5">
       <Box as="nav" display="flex" gridGap={5}>
         {navItems.map(({ href, text }) => (
           <NavItem to={href} key={href}>

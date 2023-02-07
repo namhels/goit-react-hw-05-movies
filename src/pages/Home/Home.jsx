@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import api from "utils/apiThemoviedb";
 import HomeMovieItem from "components/HomeMovieItem";
-import { MovieList } from "./Home.styled";
+import { MovieList, TitleMovieList } from "./Home.styled";
+import Box from "components/Box";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -22,11 +23,14 @@ const Home = () => {
   }, []);
 
   return (
-    <MovieList>
-      {movies.map((movie) =>
-        <HomeMovieItem key={movie.id} movie={movie} />
-      )}
-    </MovieList>
+    <Box p={4} bg="grey.0">
+      <TitleMovieList>Trending Movies</TitleMovieList>
+      <MovieList>
+        {movies.map((movie) =>
+          <HomeMovieItem key={movie.id} movie={movie} />
+        )}
+      </MovieList>
+    </Box>
   );
 };
 
