@@ -13,38 +13,43 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filterParam = searchParams.get('filter') ?? '';
 
+  console.log(location);
+  console.log(location.search);
+  // console.log(filterParam);
+  // console.log(api.query);
   useEffect(() => {
-    // console.log(location);
   const getMovies = async () => {
     try {
-      api.query = { from: location };
+      if (!filterParam) {
+        return null;
+      };
+      api.query = filterParam;
       const  { results }  = await  api.getMovieSearch();
       setMovies(results);
-
     } catch (error) {
       toast.error(`Ouch! Something went wrong :( Reload the page and try again!`);
     };
     };
     getMovies();
-  }, [location]);
+  }, [filterParam]);
 
   const changeFilter = value => {
     setSearchParams(value !== '' ? { filter: value } : {});
   };
 
-  const visibleMovies = useMemo(() => {
-    return movies.filter(movie =>
-      movie.title.toLowerCase().includes(filterParam.toLowerCase())
-    );
-  }, [movies, filterParam]);
+  // const visibleMovies = useMemo(() => {
+  //   return movies.filter(movie =>
+  //     movie.title.toLowerCase().includes(filterParam.toLowerCase())
+  //   );
+  // }, [movies, filterParam]);
 
   return (
     <Box p={4} bg="grey.0">
-      <Searchbar value={filterParam} onSubmit={changeFilter} />
+      <Searchbar onSubmit={changeFilter} />
       <TitleMovieList>Finding Movies</TitleMovieList>
       <MovieList>
-        {visibleMovies.map((movie) =>
-          <HomeMovieItem key={movie.id} movie={movie} state={{ from: location }} />
+        {movies.map((movie) =>
+          <HomeMovieItem key={movie.id} movie={movie}/>
         )}
       </MovieList>
     </Box>

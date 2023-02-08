@@ -12,11 +12,11 @@ const initialValues = {
   inputValue: '',
 };
 
-const Searchbar = ({ value, onSubmit }) => {
-  const handleSubmit = async ({ inputValue }, { resetForm, setSubmitting }) => {
+const Searchbar = ({ onSubmit }) => {
+  const handleSubmit = async ({ inputValue }, { setSubmitting }) => {
     await onSubmit(inputValue);
     setSubmitting(false);
-    resetForm();
+    // resetForm();
   };
 
 
@@ -28,12 +28,12 @@ const Searchbar = ({ value, onSubmit }) => {
         onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <SearchForm>
-            <SearchFormButton type="submit">
+            <SearchFormButton
+              type="submit" disabled={isSubmitting}>
               <IconBsSearch />
             </SearchFormButton>
             <SearchFormInput
               name="inputValue"
-              value={value}
               type="text"
               autoComplete="off"
               autoFocus
