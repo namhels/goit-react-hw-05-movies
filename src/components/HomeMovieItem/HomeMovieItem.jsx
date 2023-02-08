@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
 import notFoundImg from '../../images/not_found_ver.jpg';
-import { NavItem } from './HomeMovieItem.styled';
+import { Item } from './HomeMovieItem.styled';
 
 const HomeMovieItem = ({ movie }) => {
   const { id, poster_path, title, release_date } = movie;
-  const poster = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : notFoundImg;
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : notFoundImg;
   const year = new Date(release_date).getFullYear();
-
+  console.log(movie);
   return (
-    <NavItem to={id}>
+    <Item to={id}>
       <img src={poster} alt={title} loading="lazy" />
-      <p>{title} | {year}</p>
-    </NavItem>
+      <p>
+        {title} | {year}
+      </p>
+    </Item>
   );
 };
 
@@ -21,6 +25,7 @@ HomeMovieItem.propTypes = {
     poster_path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
-}).isRequired};
+  }).isRequired,
+};
 
 export default HomeMovieItem;
