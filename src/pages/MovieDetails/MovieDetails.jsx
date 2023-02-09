@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import notFoundImg from '../../images/not_found_ver.jpg';
 import api from 'utils/apiThemoviedb';
+import {
+  Caption,
+  Data,
+  IconBack,
+  Image,
+  LinkBack,
+  Main,
+  MovieWrapper,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -26,18 +36,35 @@ const MovieDetails = () => {
   if (!movie) {
     return null;
   }
-
-  const { id, title } = movie;
+  console.log(movie);
+  const { poster_path, title, vote_average, genres } = movie;
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : notFoundImg;
+  const userScore = `${Math.round(vote_average * 10)}%`;
+  const genresUpdate = genres.map(({ name }) => `${name}, `);
   const backLinkHref = location.state?.from ?? '/movies';
 
   // console.log(location);
 
   return (
-    <main>
-      <Link to={backLinkHref}>Back to movies</Link>
-      <p>id: {id}</p>
-      <p>Username: {title}</p>
-    </main>
+    <Main>
+      <LinkBack to={backLinkHref}>
+        <IconBack /> go back
+      </LinkBack>
+      <MovieWrapper>
+        <Image src={poster} alt={title} />
+        <div>
+          <h3>{title}</h3>
+          <Caption>
+            User Score:<Data>{userScore}</Data>
+          </Caption>
+          <Caption>
+            Genres:<Data>{genresUpdate}</Data>
+          </Caption>
+        </div>
+      </MovieWrapper>
+    </Main>
   );
 };
 

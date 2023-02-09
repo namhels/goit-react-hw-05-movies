@@ -3,8 +3,8 @@ import { BsSearch } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const SearchFormWrapper = styled.div`
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
+  padding-left: ${p => p.theme.space[7]}px;
+  padding-right: ${p => p.theme.space[7]}px;
 `;
 
 const SearchForm = styled(Form)`

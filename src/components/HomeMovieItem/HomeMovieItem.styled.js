@@ -6,6 +6,7 @@ const Item = styled(Link)`
   flex-direction: column;
   align-items: center;
   color: ${p => p.theme.colors.halloween[3]};
+  font-weight: ${p => p.theme.fontWeights.bold};
   text-decoration: none;
   cursor: pointer;
   transition: all 300ms;

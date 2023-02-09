@@ -15,10 +15,13 @@ const TitleMovieList = styled.h2`
 
 const MovieList = styled.ul`
   display: grid;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${p => p.theme.space[4]}px;
+  gap: 1.4rem;
 `;
 
 export { MovieList, TitleMovieList };
