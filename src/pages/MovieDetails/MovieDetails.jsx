@@ -11,12 +11,8 @@ const MovieDetails = () => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        // if (!movieId) {
-        //   return null;
-        // }
         api.id = Number(movieId);
         const movie = await api.getMovieDetails();
-        // console.log(movie);
         setMovie(movie);
       } catch (error) {
         toast.error(
@@ -31,14 +27,16 @@ const MovieDetails = () => {
     return null;
   }
 
-  const { id, name } = movie;
+  const { id, title } = movie;
   const backLinkHref = location.state?.from ?? '/movies';
+
+  // console.log(location);
 
   return (
     <main>
       <Link to={backLinkHref}>Back to movies</Link>
       <p>id: {id}</p>
-      <p>Username: {name}</p>
+      <p>Username: {title}</p>
     </main>
   );
 };

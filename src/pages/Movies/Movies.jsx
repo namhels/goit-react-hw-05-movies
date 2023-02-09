@@ -37,9 +37,9 @@ const Movies = () => {
   };
 
   return (
-    <Box p={4} bg="grey.0">
+    <Box p={4} bg="grey.0" width="100%">
       <Searchbar onSubmit={changeFilter} />
-      <TitleMovieList>Finding Movies</TitleMovieList>
+      {movies.length ? <TitleMovieList>Finding Movies</TitleMovieList> : null}
       <MovieList>
         {movies.map(movie => (
           <HomeMovieItem

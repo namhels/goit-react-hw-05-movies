@@ -2,33 +2,28 @@ import { Form, Field } from 'formik';
 import { BsSearch } from 'react-icons/bs';
 import styled from 'styled-components';
 
-const SearchbarStyled = styled.header`
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  color: #fff;
-  background-color: ${p => p.theme.colors.halloween[0]};
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+const SearchFormWrapper = styled.div`
+  padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px;
 `;
 
 const SearchForm = styled(Form)`
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 600px;
+  /* margin-left: auto;
+  margin-right: auto; */
+
   background-color: #fff;
   border-radius: ${p => p.theme.radii.medium};
   overflow: hidden;
+  box-shadow: ${p => p.theme.shadows.small};
+  transition: all 300ms;
+  :hover {
+    border-color: ${p => p.theme.colors.blues[0]};
+    box-shadow: ${p => p.theme.shadows.mediumBlue};
+  }
 `;
 
 const SearchFormButton = styled.button`
@@ -38,6 +33,7 @@ const SearchFormButton = styled.button`
   width: 48px;
   height: 48px;
   color: ${p => p.theme.colors.halloween[5]};
+  background-color: ${p => p.theme.colors.halloween[7]};
   border: 0;
   background-size: 40%;
   background-repeat: no-repeat;
@@ -47,14 +43,11 @@ const SearchFormButton = styled.button`
 `;
 
 const IconBsSearch = styled(BsSearch)`
-  /* position: absolute; */
   width: 18px;
   height: 18px;
   padding: 0;
   overflow: hidden;
-  /* clip: rect(0, 0, 0, 0); */
   white-space: nowrap;
-  /* clip-path: inset(50%); */
   border: 0;
   transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   ${SearchFormButton}:hover & {
@@ -85,7 +78,7 @@ const SearchFormInput = styled(Field)`
 `;
 
 export {
-  SearchbarStyled,
+  SearchFormWrapper,
   SearchForm,
   SearchFormButton,
   IconBsSearch,

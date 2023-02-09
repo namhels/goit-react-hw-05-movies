@@ -5,6 +5,7 @@ const TitleMovieList = styled.h2`
   justify-content: center;
   align-items: center;
   padding-bottom: ${p => p.theme.space[4]}px;
+  padding-top: ${p => p.theme.space[4]}px;
   color: ${p => p.theme.colors.halloween[5]};
   transition: all 300ms;
   :hover {
@@ -14,6 +15,8 @@ const TitleMovieList = styled.h2`
 
 const MovieList = styled.ul`
   display: grid;
+  padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px;
   grid-template-columns: repeat(4, 1fr);
   gap: ${p => p.theme.space[4]}px;
 `;

@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import notFoundImg from '../../images/not_found_ver.jpg';
 import { Item } from './HomeMovieItem.styled';
 
-const HomeMovieItem = ({ movie }) => {
+const HomeMovieItem = ({ movie, state }) => {
   const { id, poster_path, title, release_date } = movie;
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : notFoundImg;
   const year = new Date(release_date).getFullYear();
-  console.log(movie);
+
   return (
-    <Item to={id}>
+    <Item to={`/movies/${id}`} state={state}>
       <img src={poster} alt={title} loading="lazy" />
       <p>
         {title} | {year}
@@ -26,6 +26,7 @@ HomeMovieItem.propTypes = {
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
   }).isRequired,
+  state: PropTypes.object,
 };
 
 export default HomeMovieItem;
