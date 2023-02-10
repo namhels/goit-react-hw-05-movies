@@ -1,17 +1,28 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import notFoundImg from '../../images/not_found_ver.jpg';
+import Loader from 'components/Loader';
 import api from 'utils/apiThemoviedb';
 import {
+  Additional,
   Caption,
   Data,
+  DataWrapper,
   IconBack,
   Image,
   LinkBack,
   Main,
   MovieWrapper,
+  NavItemBox,
+  NavItemCard,
+  OverviewText,
 } from './MovieDetails.styled';
+
+const navItems = [
+  { href: 'cast', text: 'cast' },
+  { href: 'reviews', text: 'reviews' },
+];
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -36,16 +47,16 @@ const MovieDetails = () => {
   if (!movie) {
     return null;
   }
-  console.log(movie);
-  const { poster_path, title, vote_average, genres } = movie;
+
+  const { poster_path, title, vote_average, genres, overview } = movie;
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : notFoundImg;
   const userScore = `${Math.round(vote_average * 10)}%`;
-  const genresUpdate = genres.map(({ name }) => `${name}, `);
+  const genresUpdate = genres.map((genre, i, arr) =>
+    i + 1 === arr.length ? `${genre.name}` : `${genre.name}, `
+  );
   const backLinkHref = location.state?.from ?? '/movies';
-
-  // console.log(location);
 
   return (
     <Main>
@@ -54,16 +65,33 @@ const MovieDetails = () => {
       </LinkBack>
       <MovieWrapper>
         <Image src={poster} alt={title} />
-        <div>
+        <DataWrapper>
           <h3>{title}</h3>
-          <Caption>
-            User Score:<Data>{userScore}</Data>
-          </Caption>
-          <Caption>
-            Genres:<Data>{genresUpdate}</Data>
-          </Caption>
-        </div>
+          <Data>
+            <Caption>User Score:</Caption>
+            {userScore}
+          </Data>
+          <Data>
+            <Caption>Genres:</Caption>
+            {genresUpdate}
+          </Data>
+          <Data>
+            <Caption>Overview:</Caption>
+            <OverviewText>{overview}</OverviewText>
+          </Data>
+          <Additional>Additional information</Additional>
+          <NavItemBox>
+            {navItems.map(({ href, text }) => (
+              <NavItemCard to={href} key={href}>
+                {text}
+              </NavItemCard>
+            ))}
+          </NavItemBox>
+        </DataWrapper>
       </MovieWrapper>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Main>
   );
 };

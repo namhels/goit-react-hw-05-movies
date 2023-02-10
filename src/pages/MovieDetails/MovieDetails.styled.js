@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoPlayBack } from 'react-icons/io5';
+import { NavItem } from 'components/AppBar/AppBar.styled';
 
 const Main = styled.main`
   width: 100%;
@@ -19,6 +20,7 @@ const LinkBack = styled(Link)`
   margin-left: auto;
   margin-right: auto;
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+  border: ${p => p.theme.borders.normal}${p => p.theme.colors.halloween[1]};
   border-radius: ${p => p.theme.radii.medium};
   font-weight: ${p => p.theme.fontWeights.bold};
   text-transform: uppercase;
@@ -27,8 +29,9 @@ const LinkBack = styled(Link)`
   background-color: ${p => p.theme.colors.halloween[7]};
   transition: all 300ms;
   :hover {
-    background-color: ${p => p.theme.colors.halloween[3]};
-    color: ${p => p.theme.colors.white};
+    color: ${p => p.theme.colors.halloween[0]};
+    border-color: ${p => p.theme.colors.halloween[0]};
+    box-shadow: ${p => p.theme.shadows.mediumBlue};
   }
 `;
 
@@ -38,8 +41,7 @@ const IconBack = styled(IoPlayBack)`
 
 const MovieWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 500px;
+  width: 58%;
   margin-left: auto;
   margin-right: auto;
   padding: ${p => p.theme.space[4]}px;
@@ -49,7 +51,7 @@ const MovieWrapper = styled.div`
   box-shadow: ${p => p.theme.shadows.small};
   transition: all 300ms;
   :hover {
-    border-color: ${p => p.theme.colors.blues[0]};
+    border-color: ${p => p.theme.colors.halloween[0]};
     box-shadow: ${p => p.theme.shadows.mediumBlue};
   }
 `;
@@ -59,23 +61,51 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Caption = styled.p`
+const DataWrapper = styled.div`
+  margin-left: ${p => p.theme.space[4]}px;
+`;
+
+const Data = styled.p`
+  display: flex;
   margin-top: ${p => p.theme.space[3]}px;
   font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.halloween[5]};
 `;
 
-const Data = styled.span`
-  margin-left: ${p => p.theme.space[5]}px;
+const Caption = styled.span`
+  min-width: 100px;
 `;
 
-// ============================================
-// const MovieList = styled.ul`
-//   display: grid;
-//   padding-left: ${p => p.theme.space[4]}px;
-//   padding-right: ${p => p.theme.space[4]}px;
-//   grid-template-columns: repeat(4, 1fr);
-//   gap: ${p => p.theme.space[4]}px;
-// `;
+const OverviewText = styled.span`
+  font-weight: ${p => p.theme.fontWeights.normal};
+  padding-right: 20px;
+`;
 
-export { Main, IconBack, LinkBack, MovieWrapper, Image, Caption, Data };
+const Additional = styled.h3`
+  margin-top: ${p => p.theme.space[3]}px;
+`;
+
+const NavItemBox = styled.nav`
+  display: flex;
+  gap: 25px;
+  margin-top: ${p => p.theme.space[3]}px;
+`;
+
+const NavItemCard = styled(NavItem)`
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+`;
+
+export {
+  Main,
+  IconBack,
+  LinkBack,
+  MovieWrapper,
+  Image,
+  DataWrapper,
+  Caption,
+  Data,
+  OverviewText,
+  Additional,
+  NavItemBox,
+  NavItemCard,
+};
