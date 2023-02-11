@@ -63,13 +63,13 @@ class apiThemoviedb {
     return this.fetchMovies(endpoint, params);
   };
 
-  getGenres = () => {
-    const endpoint = '/genre/movie/list';
-    const params = new URLSearchParams({
-      api_key: this.#API_KEY,
-    });
-    return this.fetchMovies(endpoint, params);
-  };
+  // getGenres = () => {
+  //   const endpoint = '/genre/movie/list';
+  //   const params = new URLSearchParams({
+  //     api_key: this.#API_KEY,
+  //   });
+  //   return this.fetchMovies(endpoint, params);
+  // };
 
   incrementPage() {
     this.#page += 1;
