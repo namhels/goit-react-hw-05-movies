@@ -82,7 +82,11 @@ const MovieDetails = () => {
           <Additional>Additional information</Additional>
           <NavItemBox>
             {navItems.map(({ href, text }) => (
-              <NavItemCard to={href} key={href}>
+              <NavItemCard
+                to={href}
+                key={href}
+                state={{ from: location.state.from }}
+              >
                 {text}
               </NavItemCard>
             ))}

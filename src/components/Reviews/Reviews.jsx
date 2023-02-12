@@ -30,33 +30,31 @@ const Reviews = () => {
     getReviews();
   }, [movieId]);
 
+  // console.log(!reviews);
+  // console.log(!!reviews);
+  // console.log(reviews.length);
+  // console.log(reviews.length === 0);
   if (!reviews) {
-    return null;
+    return toast.warn(`We don't have any reviews for this movie`);
   }
 
   return (
-    <>
-      {reviews.length !== 0 ? (
-        <ReviewBox>
-          {reviews.map(({ id, author, content }) => (
-            <ItemReview key={id}>
-              <DataWrapperReview>
-                <DataReview>
-                  <CaptionReview>Author:</CaptionReview>
-                  {author}
-                </DataReview>
-                <DataReview>
-                  <CaptionReview>Content:</CaptionReview>
-                  <TextReview>{content}</TextReview>
-                </DataReview>
-              </DataWrapperReview>
-            </ItemReview>
-          ))}
-        </ReviewBox>
-      ) : (
-        toast.warn(`We don't have any reviews for this movie`)
-      )}
-    </>
+    <ReviewBox>
+      {reviews.map(({ id, author, content }) => (
+        <ItemReview key={id}>
+          <DataWrapperReview>
+            <DataReview>
+              <CaptionReview>Author:</CaptionReview>
+              {author}
+            </DataReview>
+            <DataReview>
+              <CaptionReview>Content:</CaptionReview>
+              <TextReview>{content}</TextReview>
+            </DataReview>
+          </DataWrapperReview>
+        </ItemReview>
+      ))}
+    </ReviewBox>
   );
 };
 
