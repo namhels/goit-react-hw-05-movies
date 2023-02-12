@@ -30,12 +30,13 @@ const Reviews = () => {
     getReviews();
   }, [movieId]);
 
-  // console.log(!reviews);
-  // console.log(!!reviews);
-  // console.log(reviews.length);
-  // console.log(reviews.length === 0);
-  if (!reviews) {
-    return toast.warn(`We don't have any reviews for this movie`);
+  if (!reviews.length) {
+    return (
+      <ReviewBox>
+        <p>We don't have any reviews for this movie</p>
+      </ReviewBox>
+    );
+    //   return toast.warn(`We don't have any reviews for this movie`);
   }
 
   return (
