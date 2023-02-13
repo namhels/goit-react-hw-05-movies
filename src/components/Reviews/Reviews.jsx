@@ -20,6 +20,9 @@ const Reviews = () => {
       try {
         api.id = Number(movieId);
         const { results } = await api.getMovieReviews();
+        if (!results.length) {
+          return toast.error(`We don't have any reviews for this movie`);
+        }
         setReviews(results);
       } catch (error) {
         toast.error(
@@ -31,12 +34,7 @@ const Reviews = () => {
   }, [movieId]);
 
   if (!reviews.length) {
-    return (
-      <ReviewBox>
-        <p>We don't have any reviews for this movie</p>
-      </ReviewBox>
-    );
-    //   return toast.warn(`We don't have any reviews for this movie`);
+    return null;
   }
 
   return (

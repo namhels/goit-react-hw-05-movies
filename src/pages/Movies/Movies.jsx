@@ -13,7 +13,6 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filterParam = searchParams.get('filter') ?? '';
 
-  // console.log(location);
   useEffect(() => {
     const getMovies = async () => {
       try {

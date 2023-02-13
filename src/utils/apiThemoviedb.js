@@ -71,20 +71,20 @@ class apiThemoviedb {
   //   return this.fetchMovies(endpoint, params);
   // };
 
-  incrementPage() {
-    this.#page += 1;
-  }
+  // incrementPage() {
+  //   this.#page += 1;
+  // }
 
-  resetPage() {
-    this.#page = 1;
-  }
+  // resetPage() {
+  //   this.#page = 1;
+  // }
 
-  get page() {
-    return this.#page;
-  }
-  set page(newPage) {
-    this.#page = newPage;
-  }
+  // get page() {
+  //   return this.#page;
+  // }
+  // set page(newPage) {
+  //   this.#page = newPage;
+  // }
   get query() {
     return this.#query;
   }

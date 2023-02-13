@@ -12,9 +12,6 @@ const SearchForm = styled(Form)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* margin-left: auto;
-  margin-right: auto; */
-
   background-color: #fff;
   border-radius: ${p => p.theme.radii.medium};
   overflow: hidden;

@@ -48,10 +48,12 @@ const MovieDetails = () => {
     return null;
   }
 
-  const { poster_path, title, vote_average, genres, overview } = movie;
+  const { poster_path, title, release_date, vote_average, genres, overview } =
+    movie;
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : notFoundImg;
+  const year = new Date(release_date).getFullYear();
   const userScore = `${Math.round(vote_average * 10)}%`;
   const genresUpdate = genres.map((genre, i, arr) =>
     i + 1 === arr.length ? `${genre.name}` : `${genre.name}, `
@@ -66,7 +68,9 @@ const MovieDetails = () => {
       <MovieWrapper>
         <Image src={poster} alt={title} />
         <DataWrapper>
-          <h3>{title}</h3>
+          <h3>
+            {title} ({year})
+          </h3>
           <Data>
             <Caption>User Score:</Caption>
             {userScore}
